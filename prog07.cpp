@@ -246,16 +246,47 @@ void underTenHop(){
 
     BFS(LIST, startNode);
 }
+void DFS(adjList adjListIn, listNode* Node, vector<bool> visited){
+    visited.at(Node->index) = true;
+    cout<<*locArr.at(Node->index)<<endl;
+
+    adjNode* p = Node->adj;
+    while(p != NULL){
+        int checkIndex = p->index;
+
+        if(visited.at(checkIndex) == false){
+            listNode* nextNode = LIST.isThereAdjNode(checkIndex);
+            DFS(adjListIn, nextNode, visited);
+        }
+    }
+    return;
+}
+void DFSTraversal(){
+    string inputLocName;
+    cout<<"Enter Location Name: ";
+    getline(cin,inputLocName);
+
+    int locIndex = getIndexFromLocName(inputLocName);
+    listNode* startNode = LIST.isThereAdjNode(locIndex);
+
+    if(startNode == NULL){
+        cout<<"NOT EXIST LOCATION."<<endl;
+        return;
+    }
+
+    vector<bool> visited(locArr.size());
+
+    DFS(LIST, startNode, visited);
+}
 int main(void) {
 
     readLoc("alabama.txt");
-    //cout<<*locArr.at(2)<<endl;
-    //cout<<locArr.size()<<endl;
 
     readAdj("roadList2.txt");
-    //cout<<LIST.root->adj->index<<endl;
 
-    underTenHop();
+    //underTenHop();
+
+    DFSTraversal();
 
     return 0;
 }
