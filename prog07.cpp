@@ -4,6 +4,7 @@
 #include<cmath>
 #include<vector>
 #include<algorithm>
+#include<queue>
 
 #define PI acos(-1.0)
 
@@ -200,15 +201,61 @@ void readAdj(string filename){
 
     }
 }
+void BFS(adjList adjListIn, listNode* startNode){
+    vector<int> visited(locArr.size());
+    fill(visited.begin(), visited.end(), -1);
+
+    queue<listNode*> Q;
+    int hop = 0;
+    visited.at(startNode->index) = hop;
+    Q.push(startNode);
+    while(!Q.empty()){
+        listNode* checkNode = Q.front();
+        Q.pop();
+        adjNode* p = checkNode->adj;
+        while(p!=NULL){
+            int checkIndex = p->index;
+            if(visited.at(checkIndex) == -1){
+                hop = visited.at(checkNode->index)+1;
+                if(hop > 10) return;
+
+                visited.at(checkIndex) = hop;
+                listNode* newEnqueue = LIST.isThereAdjNode(checkIndex);
+                cout<<" [hop] : "<<hop<<endl;
+                cout<<*locArr.at(checkIndex)<<endl;
+                Q.push(newEnqueue);
+            }
+            p = p->next;
+        }
+    }
+}
+void underTenHop(){
+
+    string inputLocName;
+
+    cout<<"Enter Location Name: ";
+    getline(cin,inputLocName);
+
+    int locIndex = getIndexFromLocName(inputLocName);
+    listNode* startNode = LIST.isThereAdjNode(locIndex);
+
+    if(startNode == NULL){
+        cout<<"NOT EXIST LOCATION."<<endl;
+        return;
+    }
+
+    BFS(LIST, startNode);
+}
 int main(void) {
 
     readLoc("alabama.txt");
-    cout<<*locArr.at(2)<<endl;
-    cout<<locArr.size()<<endl;
+    //cout<<*locArr.at(2)<<endl;
+    //cout<<locArr.size()<<endl;
 
     readAdj("roadList2.txt");
-    cout<<LIST.root->adj->index<<endl;
+    //cout<<LIST.root->adj->index<<endl;
 
+    underTenHop();
 
     return 0;
 }
