@@ -19,7 +19,7 @@ void getInput(){
     }
 }
 void BFS(int startIndex){
-	queue<int> q;
+    queue<int> q;
     q.push(startIndex);
     adjArr[startIndex][0] = VISITED;
 
