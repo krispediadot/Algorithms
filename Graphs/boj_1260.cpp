@@ -7,7 +7,6 @@
 using namespace std;
 int N, M, startIndex;
 int adjArr[SIZE][SIZE]={0};
-queue<int> q;
 
 void getInput(){
     cin>>N>>M>>startIndex;
@@ -20,6 +19,7 @@ void getInput(){
     }
 }
 void BFS(int startIndex){
+	queue<int> q;
     q.push(startIndex);
     adjArr[startIndex][0] = VISITED;
 
