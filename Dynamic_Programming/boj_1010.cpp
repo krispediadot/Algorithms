@@ -26,7 +26,6 @@ int sol(int i, int j){
 }
 
 int main(void){
-
     int T;
     int N, M;
 
