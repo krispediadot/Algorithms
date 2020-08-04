@@ -18,7 +18,7 @@ int main(void){
         for (int i = 0; i < n; ++i)
             cin >> c[i];
         cin>>k;
-        // 1을 만들 수 있는 경우의수
+        // base
         dp[0] = 1;
 
         for (int i = 0; i < n; ++i) {
