@@ -71,13 +71,17 @@ char FIND_SET(char target, SetItem **set){
 SetItem **UNION(char e1, char e2, SetItem **set){
     char x = FIND_SET(e1, set);
     char y = FIND_SET(e2, set);
+    int xIndex, yIndex;
 
     for(int sIndex=0; sIndex<10; sIndex++){
-        if(set[sIndex]->origin == y) {
-            set[sIndex]->parent = x;
-            break;
-        }
+        if(set[sIndex]->origin == x)
+            xIndex = sIndex;
+        if(set[sIndex]->origin == y)
+            yIndex = sIndex;
     }
+
+    set[yIndex]->parent = x;
+
     return set;
 }
 
@@ -98,6 +102,7 @@ void CONNECTED_COMPONENTS(char vertex[], Edge *edge[], SetItem *set[]){
 }
 
 int main(){
+
     SetItem *set[10];
     char vertex[] = {'a','b','c','d','e','f','g','h','i','j'};
     Edge *edge[] = { new Edge('b','d'),
