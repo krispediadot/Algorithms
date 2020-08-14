@@ -12,6 +12,11 @@ struct SetItem{
     char parent;
     SetItem(char origin, char parent): origin(origin), parent(parent){}
 };
+
+char FIND_SET(char target, SetItem **set);
+
+////////////////// 출력용 /////////////////////////////
+///
 void checkSet(SetItem *set[]){
     for(int i=0; i<10; i++)
         cout<<set[i]->origin<<" ";
@@ -35,7 +40,7 @@ void printSet(SetItem *set[]){
             char headChar = set[index]->origin;
             cout<<"{ ";
             for(int setIndex=0; setIndex<10; setIndex++){
-                if(set[setIndex]->parent == headChar)
+                if(FIND_SET(set[setIndex]->origin, set) == headChar)
                     cout<<set[setIndex]->origin<<" ";
             }
             cout<<"} ";
@@ -43,26 +48,39 @@ void printSet(SetItem *set[]){
     }
     cout<<endl;
 }
+///
+////////////////////////////////////////////////////////
 
 SetItem **MAKE_SET(int index, char in, SetItem **set){
     *(set+index) = new SetItem(in, in);
     return set;
 }
 char FIND_SET(char target, SetItem **set){
-    for(int setIndex=0; setIndex<10; setIndex++){
-        if(set[setIndex]->origin == target)
-            return set[setIndex]->parent;
+    int targetIndex;
+    for(int sIndex=0; sIndex<10; sIndex++){
+        if(set[sIndex]->origin == target) {
+            targetIndex = sIndex;
+            break;
+        }
     }
-    return NULL;
+    if(set[targetIndex]->parent != set[targetIndex]->origin){
+        set[targetIndex]->parent = FIND_SET(set[targetIndex]->parent, set);
+    }
+    return set[targetIndex]->parent;
 }
 SetItem **UNION(char e1, char e2, SetItem **set){
-    for(int setIndex=0; setIndex<10; setIndex++){
-        if(set[setIndex]->parent == e2) {
-            set[setIndex]->parent = e1;
+    char x = FIND_SET(e1, set);
+    char y = FIND_SET(e2, set);
+
+    for(int sIndex=0; sIndex<10; sIndex++){
+        if(set[sIndex]->origin == y) {
+            set[sIndex]->parent = x;
+            break;
         }
     }
     return set;
 }
+
 void CONNECTED_COMPONENTS(char vertex[], Edge *edge[], SetItem *set[]){
     for(int vIndex=0; vIndex<10; vIndex++){
         set = MAKE_SET(vIndex, vertex[vIndex], set);
@@ -74,6 +92,7 @@ void CONNECTED_COMPONENTS(char vertex[], Edge *edge[], SetItem *set[]){
             set = UNION(edge[eIndex]->e1,edge[eIndex]->e2, set);
         cout<<"("<<edge[eIndex]->e1<<'-'<<edge[eIndex]->e2<<") ";
         printSet(set);
+        //checkSet(set);
     }
     return;
 }
