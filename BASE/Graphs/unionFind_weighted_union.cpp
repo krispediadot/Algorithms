@@ -70,7 +70,7 @@ char FIND_SET(char target, SetItem **set){
     }
     return set[targetIndex]->parent;
 }
-SetItem **UNION(char e1, char e2, SetItem **set){
+SetItem **Weighted_Union(char e1, char e2, SetItem **set){
     char x = FIND_SET(e1, set);
     char y = FIND_SET(e2, set);
     int xIndex, yIndex;
@@ -102,7 +102,7 @@ void CONNECTED_COMPONENTS(char vertex[], Edge *edge[], SetItem *set[]){
     printSet(set);
     for(int eIndex=0; eIndex<7; eIndex++){
         if(FIND_SET(edge[eIndex]->e1, set) != FIND_SET(edge[eIndex]->e2, set))
-            set = UNION(edge[eIndex]->e1,edge[eIndex]->e2, set);
+            set = Weighted_Union(edge[eIndex]->e1,edge[eIndex]->e2, set);
         cout<<"("<<edge[eIndex]->e1<<'-'<<edge[eIndex]->e2<<") ";
         printSet(set);
         //checkSet(set);
@@ -121,7 +121,7 @@ int main(){
                      new Edge('a','b'),
                      new Edge('e','f'),
                      new Edge('b','c')
-                     };
+    };
 
     CONNECTED_COMPONENTS(vertex, edge, set);
 
