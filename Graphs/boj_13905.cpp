@@ -82,6 +82,5 @@ int main(){
     }
 
     cout<<MST_Kruskal()<<endl;
-
     return 0;
 }
