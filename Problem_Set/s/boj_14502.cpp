@@ -78,8 +78,8 @@ void buildWall(int initI, int initJ, int cnt){
         return;
     }
     for(int i=initI; i<n; i++){
-        int j = i==initI?initJ+1:0;
-        if(initI==0 && initJ==0) j=0;
+        int j = i==initI?initJ+1:0; // 이전 wall 다음 부터 시작
+        if(initI==0 && initJ==0) j=0; // 시작점은 제외
         for(; j<m; j++){
             if(arr[i][j]==0) {
                 arr[i][j] = 1;
@@ -91,7 +91,6 @@ void buildWall(int initI, int initJ, int cnt){
 }
 int main(){
     getInput();
-    //spreadVirus();
     buildWall(0,0,0);
 
     cout<<ans;
