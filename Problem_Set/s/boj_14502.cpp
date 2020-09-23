@@ -95,5 +95,4 @@ int main(){
     buildWall(0,0,0);
 
     cout<<ans;
-
 }
