@@ -2,10 +2,6 @@
 #include<vector>
 #define MAX 50
 #define OUT 0
-#define ANTA 1
-#define RUTA2 2
-#define RUTA3 3
-#define HOMERUN 4
 using namespace std;
 
 int info[MAX][10];
@@ -37,13 +33,7 @@ int simulation(vector<int> lineup){
                 continue;
             }
             // 안타이면 이동
-            int moveTerm;
-            switch(info[playCount][playerIdx]){
-                case ANTA: {moveTerm = 1; break;}
-                case RUTA2: {moveTerm = 2; break;}
-                case RUTA3: {moveTerm = 3; break;}
-                case HOMERUN: {moveTerm = 4; break;}
-            }
+            int moveTerm = info[playCount][playerIdx];
             // 주자가 있는 경우
             if(baseRunner.size()>0) {
                 // 홈도착 점수 세기
