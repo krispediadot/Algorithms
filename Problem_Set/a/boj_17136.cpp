@@ -1,5 +1,5 @@
 #include<iostream>
-#include<altorighm>
+#include<algorithm>
 #include<vector>
 #define MAX 10
 
@@ -13,7 +13,6 @@ struct Loc{
     }
 };
 
-int maze[MAX][MAX];
 vector<Loc> ones;
 vector<int> eachLeft(6,5);
 int ans = 26;
@@ -21,8 +20,8 @@ int ans = 26;
 void getInput(){
     for(int i=0; i<10; i++){
         for(int j=0; j<10; j++){
-            cin>>maze[i][j];
-            if(maze[i][j]==1)
+            int num; cin>>num;
+            if(num==1)
                 ones.push_back(Loc(i,j));
         }
     }
