@@ -1,4 +1,5 @@
 #include<iostream>
+#include<altorighm>
 #include<vector>
 #define MAX 10
 
