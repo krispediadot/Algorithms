@@ -9,24 +9,24 @@
 // 3
 //
 
-#include<iostream>
-#include<vector>
-#include<string>
+#include <iostream>
+#include <vector>
+#include <string>
 
 using namespace std;
 
-int max(int a, int b) {return a>b?a:b;}
+int max(int a, int b) { return a > b ? a : b; }
 
-int main(){
+int main() {
     int dp[101][101][101] = {0};
 
-    string a,b,c; cin>>a>>b>>c;
-    for(int i=0; i<=a.length(); i++){ // i -> a[i-1] 
-        for(int j=0; j<=b.length(); j++){ // j-> b[j-1]
-            for(int k=0; k<=c.length(); k++){ // k -> c[k-1]
-                if(i==0 || j==0 || k==0) dp[i][j][k] = 0;
-                else if(a[i-1]==b[j-1]&&b[j-1]==c[k-1]) dp[i][j][k] = dp[i-1][j-1][k-1]+1;
-                else dp[i][j][k] = max(dp[i-1][j][k], max(dp[i][j-1][k], dp[i][j][k-1]));
+    string a, b, c; cin >> a >> b >> c;
+    for (int i = 0; i <= a.length(); i++) { // i -> a[i-1] 
+        for (int j = 0; j <= b.length(); j++) { // j-> b[j-1]
+            for (int k = 0; k <= c.length(); k++) { // k -> c[k-1]
+                if (i == 0 || j == 0 || k == 0) dp[i][j][k] = 0;
+                else if (a[i - 1] == b[j - 1] && b[j - 1] == c[k - 1]) dp[i][j][k] = dp[i - 1][j - 1][k - 1] + 1;
+                else dp[i][j][k] = max(dp[i - 1][j][k], max(dp[i][j - 1][k], dp[i][j][k - 1]));
             }
         }
     }
@@ -49,6 +49,6 @@ int main(){
     //     }
     // }
 
-    cout<<dp[a.length()][b.length()][c.length()]<<"\n";
+    cout << dp[a.length()][b.length()][c.length()] << "\n";
     // cout<<lcs;
 }

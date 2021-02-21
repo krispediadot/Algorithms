@@ -10,22 +10,22 @@
 // 0 1
 //
 
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
-int main(){
-    int n; cin>>n;
+int main() {
+    int n; cin >> n;
     int a = 0;
     int b = 1;
     int idx = 1;
-    while(idx<n){
+    while (idx < n) {
         int newa = b;
-        int newb = a+b;
+        int newb = a + b;
         a = newa;
         b = newb;
 
         idx++;
     }
-    cout<<a<<" "<<b;
+    cout << a << " " << b;
 }

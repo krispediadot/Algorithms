@@ -7,14 +7,14 @@
 // SK
 //
 
-#include<iostream>
+#include <iostream>
 #define SK 1
 #define CY 0
 using namespace std;
 
-int main(){
-    int n;cin>>n;
+int main() {
+    int n; cin >> n;
 
-    if(n%2==SK) cout<<"SK";
-    else cout<<"CY";
+    if (n % 2 == SK) cout << "SK";
+    else cout << "CY";
 }

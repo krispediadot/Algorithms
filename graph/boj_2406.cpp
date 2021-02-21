@@ -11,7 +11,7 @@ vector<int> setInfo;
 int n, m;
 
 int findSet(int target) {
-    if(target == setInfo[target]) return target;
+    if (target == setInfo[target]) return target;
     return setInfo[target] = findSet(setInfo[target]);
 }
 void unionSet(int target1, int target2) {
@@ -57,7 +57,7 @@ int main() {
         for (int j = 1; j <= n; j++) {
             int cost; cin >> cost;
             if (i == j || i == 1 || j == 1) continue;
-            edges.push_back(make_pair(cost, make_pair(i,j)));
+            edges.push_back(make_pair(cost, make_pair(i, j)));
         }
     }
     solution();

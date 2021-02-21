@@ -13,27 +13,26 @@
 // output
 // 453
 
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
 using namespace std;
 
-int main(){
-    int n; cin>>n;
+int main() {
+    int n; cin >> n;
     vector<int> arr;
     vector<int> dp;
     int answer = 0;
 
-    for(int i=0; i<n; i++){
-        int in; cin>>in;
+    for (int i = 0; i < n; i++) {
+        int in; cin >> in;
         arr.push_back(in);
         dp.push_back(in);
-        for(int j=0; j<dp.size(); j++){
-            if(arr[i]>arr[j] && dp[i]<dp[j]+arr[i]){
-                dp[i] = dp[j]+arr[i];
+        for (int j = 0; j < dp.size(); j++) {
+            if (arr[i] > arr[j] && dp[i] < dp[j] + arr[i]) {
+                dp[i] = dp[j] + arr[i];
             }
         }
-        answer = dp[i]>answer?dp[i]:answer;
+        answer = dp[i] > answer ? dp[i] : answer;
     }
-    
-    cout<<answer;
+    cout << answer;
 }
