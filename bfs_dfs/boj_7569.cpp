@@ -54,7 +54,7 @@ int solution(int N, int M, int H, vector<vector<vector<int>>>& box) {
     int days = 0;
 
     while (!q.empty()) {
-        print_box(box);
+        //print_box(box);
         
         auto target = q.front(); q.pop();
         loc location = target.first;
