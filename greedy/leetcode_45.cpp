@@ -1,5 +1,5 @@
 // 4ms, 8.3MB, 00:55:00
-class Solution {
+class Solution1 {
 public:
     int jump(vector<int>& nums) {
         if (nums.size() == 1) return 0;
@@ -16,5 +16,26 @@ public:
         }
         
         return cnts[0];
+    }
+};
+
+// 0ms, 8.3MB, 01:10:00
+class Solution2 {
+public:
+    int jump(vector<int>& nums) {
+        if (nums.size() == 1) return 0;
+
+        vector<int> cnts(nums.size(), 100000);
+        cnts[0] = 0;
+
+        for (int idx = 0; idx < nums.size() - 1; idx++) {
+            if (idx + nums[idx] >= nums.size() - 1) return cnts[idx] + 1;
+
+            for (int i = idx + 1; i <= idx + nums[idx]; i++) {
+                cnts[i] = min(cnts[i], cnts[idx] + 1);
+            }
+        }
+
+        return -1;
     }
 };
