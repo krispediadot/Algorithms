@@ -1,3 +1,4 @@
+
 // 4ms, 9.9MB, 00:02:00
 class Solution1 {
 public:
