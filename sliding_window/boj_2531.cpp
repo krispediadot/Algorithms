@@ -1,4 +1,4 @@
-// 2264 KB, 12ms
+// 2500 KB, 8ms
 #include <iostream>
 #include <vector>
 #include <unordered_map>
@@ -7,6 +7,7 @@
 using namespace std;
 
 int main() {
+	ios_base::sync_with_stdio(false); cin.tie(NULL);
 	int N, D, K, C; cin >> N >> D >> K >> C;
 	vector<int> sushi(N);
 	unordered_map<int, int> cnts;
