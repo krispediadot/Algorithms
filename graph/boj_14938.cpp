@@ -32,25 +32,23 @@ int main() {
 		nodes[start] = 0;
 
 		// start 노드와 연결된 에지 q에 추가
-		queue<pair<int, int>> q; //{dist, to}
+		queue<int> q; // nextNode
 		for (int nextNode = 1; nextNode <= n; nextNode++) {
 			if (adj[start][nextNode] <= m) {
-				q.push({adj[start][nextNode], nextNode});
+				q.push(nextNode);
 				nodes[nextNode] = adj[start][nextNode];
 			}
 		}
 
 		// 각 노드의 dist 업데이트
 		while (!q.empty()) {
-			auto target = q.front(); q.pop();
-			auto& dist = target.first;
-			auto& node = target.second;
+			auto node = q.front(); q.pop();
 
 			for (int nextNode = 1; nextNode <= n; nextNode++) {
 				auto& nextDist = adj[node][nextNode];
-				if (nodes[node] + nextDist < nodes[nextNode] && dist + nextDist <= m) {
-					nodes[nextNode] = dist + nextDist;
-					q.push({dist + nextDist, nextNode});
+				if (nodes[node] + nextDist < nodes[nextNode] && nodes[node] + nextDist <= m) {
+					nodes[nextNode] = nodes[node] + nextDist;
+					q.push(nextNode);
 				}
 			}
 		}
