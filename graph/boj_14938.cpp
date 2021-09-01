@@ -31,14 +31,9 @@ int main() {
 		vector<int> nodes(n+1, INT_MAX); // 노드에 갈 수 있는 최소 dist
 		nodes[start] = 0;
 
-		// start 노드와 연결된 에지 q에 추가
+		// 시작점 지정
 		queue<int> q; // nextNode
-		for (int nextNode = 1; nextNode <= n; nextNode++) {
-			if (adj[start][nextNode] <= m) {
-				q.push(nextNode);
-				nodes[nextNode] = adj[start][nextNode];
-			}
-		}
+		q.push(start);
 
 		// 각 노드의 dist 업데이트
 		while (!q.empty()) {
