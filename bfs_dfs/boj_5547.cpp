@@ -1,4 +1,4 @@
-// 2160 KB, 0ms
+// 	2160 KB, 0ms
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -22,7 +22,8 @@ int check(vector<vector<int>>& board, vector<vector<bool>>& visited, int& H, int
 
 	while (!q.empty()) {
 		auto target = q.front(); q.pop();
-		vector<pair<int, int>> near = NEAR[target.first % 2];
+		vector<pair<int, int>> near = NEAR[target.first % 2]; // 행의 홀/짝에 따라 주변 노드가 달라짐
+
 		for (int i = 0; i < 6; i++) {
 			pair<int, int> pos = { target.first + near[i].first, target.second + near[i].second };
 			if (isValid(pos, H, W)) {
