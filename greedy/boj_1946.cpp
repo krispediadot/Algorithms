@@ -1,3 +1,5 @@
+// 2924 KB, 512ms
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
