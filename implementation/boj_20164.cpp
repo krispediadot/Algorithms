@@ -23,12 +23,8 @@ void solution(string s, int& minAnswer, int& maxAnswer, int cntOdd) {
         return;
     }
 
-    // split into three part
     for (int split1 = 1; split1 < s.length() - 1; split1++) {
         for (int split2 = split1+1; split2 < s.length(); split2++) {
-            int a = stoi(s.substr(0,split1));
-            int b = stoi(s.substr(split1, split2-split1));
-            int c = stoi(s.substr(split2));
             int res = stoi(s.substr(0,split1)) + stoi(s.substr(split1, split2-split1)) + stoi(s.substr(split2));
             string res_s = to_string(res);
             int cnt = 0;
