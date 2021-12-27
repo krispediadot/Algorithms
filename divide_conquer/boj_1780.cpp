@@ -1,3 +1,57 @@
+// 20832 KB, 356ms
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+bool isOneNumber(vector<vector<int>>& board, int r_s, int c_s, int size) {
+    int number = board[r_s][c_s];
+
+    for (int r = 0; r < size; r++) {
+        for (int c = 0; c < size; c++) {
+            if (board[r_s + r][c_s + c] != number) return false;
+        }
+    }
+
+    return true;
+}
+
+void solution(vector<vector<int>>& board, int r_s, int c_s, int size, vector<int>& answer) {
+    if (size == 1 || isOneNumber(board, r_s, c_s, size)) {
+        answer[board[r_s][c_s]+1]++;
+        return;
+    }
+
+    // divide 9
+    int len = size / 3;
+
+    for (int r = r_s; r < r_s+size; r+=len) {
+        for (int c = c_s; c < c_s+size; c+=len) {
+            solution(board, r, c, len, answer);
+        }
+    }
+}
+
+int main() {
+    ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL);
+    int n; cin >> n;
+    vector<vector<int>> board(n, vector<int>(n));
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> board[i][j];
+        }
+    }
+
+    vector<int> answer(3);
+
+    solution(board, 0, 0, n, answer);
+
+    for (auto a : answer) cout << a << '\n';
+
+    return 0;
+}
+
 // 23300 KB, 1068ms
 #include <iostream>
 #include <vector>
