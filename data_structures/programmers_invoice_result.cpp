@@ -124,3 +124,204 @@ vector<int> solution(vector<string> id_list, vector<string> report, int k) {
     
     return answer;
 }
+
+/*
+테스트 1 〉	통과 (0.02ms, 4.15MB)
+테스트 2 〉	통과 (0.02ms, 4.14MB)
+테스트 3 〉	통과 (99.72ms, 39MB)
+테스트 4 〉	통과 (0.03ms, 4.09MB)
+테스트 5 〉	통과 (0.03ms, 4.17MB)
+테스트 6 〉	통과 (0.54ms, 4.15MB)
+테스트 7 〉	통과 (1.01ms, 4.04MB)
+테스트 8 〉	통과 (1.85ms, 4.57MB)
+테스트 9 〉	통과 (36.51ms, 20.4MB)
+테스트 10 〉	통과 (28.77ms, 20.3MB)
+테스트 11 〉	통과 (86.97ms, 38.8MB)
+테스트 12 〉	통과 (0.18ms, 4.22MB)
+테스트 13 〉	통과 (0.19ms, 4.1MB)
+테스트 14 〉	통과 (33.38ms, 19.4MB)
+테스트 15 〉	통과 (55.92ms, 32MB)
+테스트 16 〉	통과 (0.10ms, 4.16MB)
+테스트 17 〉	통과 (0.17ms, 3.75MB)
+테스트 18 〉	통과 (0.24ms, 4.15MB)
+테스트 19 〉	통과 (0.38ms, 4.09MB)
+테스트 20 〉	통과 (32.27ms, 19.3MB)
+테스트 21 〉	통과 (57.19ms, 32MB)
+테스트 22 〉	통과 (0.01ms, 4.01MB)
+테스트 23 〉	통과 (0.01ms, 3.66MB)
+테스트 24 〉	통과 (0.02ms, 4.02MB)
+*/
+
+#include <string>
+#include <vector>
+#include <unordered_set>
+#include <unordered_map>
+
+using namespace std;
+
+struct Person {
+    string name;
+    unordered_set<string> froms;
+
+    Person (string name): name(name) {};
+};
+
+vector<int> solution(vector<string> id_list, vector<string> report, int k) {
+
+    unordered_map<string, int> ids;
+    for (int i = 0; i < id_list.size(); i++) ids[id_list[i]] = i;
+
+    vector<int> answer(id_list.size(), 0);
+
+    vector<Person> people;
+
+    for (auto& name : id_list) {
+        Person p(name);
+        people.push_back(p);
+    }
+
+    for (auto& r: report) {
+        // 1. split from_to
+        string from = r.substr(0, r.find(' '));
+        string to = r.substr(r.find(' ')+1);
+
+        // 2. add from to
+        people[ids[to]].froms.insert(from);
+    }  
+
+    // 3. send mail 
+    for (auto& p : people) {
+        if (p.froms.size() >= k) {
+            for (auto& f : p.froms) {
+                answer[ids[f]]++;
+            }
+        }
+    } 
+
+    return answer;
+}
+
+/*
+테스트 1 〉	통과 (0.02ms, 4.18MB)
+테스트 2 〉	통과 (0.02ms, 4.17MB)
+테스트 3 〉	통과 (100.44ms, 39.1MB)
+테스트 4 〉	통과 (0.03ms, 4.07MB)
+테스트 5 〉	통과 (0.03ms, 4.09MB)
+테스트 6 〉	통과 (0.53ms, 4.17MB)
+테스트 7 〉	통과 (1.00ms, 4.18MB)
+테스트 8 〉	통과 (1.78ms, 4.61MB)
+테스트 9 〉	통과 (34.39ms, 20.2MB)
+테스트 10 〉	통과 (28.35ms, 20.2MB)
+테스트 11 〉	통과 (77.98ms, 38.8MB)
+테스트 12 〉	통과 (0.17ms, 4.16MB)
+테스트 13 〉	통과 (0.16ms, 4.15MB)
+테스트 14 〉	통과 (32.57ms, 19.4MB)
+테스트 15 〉	통과 (56.72ms, 32.1MB)
+테스트 16 〉	통과 (0.10ms, 3.71MB)
+테스트 17 〉	통과 (0.16ms, 4.17MB)
+테스트 18 〉	통과 (0.23ms, 4.18MB)
+테스트 19 〉	통과 (0.36ms, 3.89MB)
+테스트 20 〉	통과 (39.32ms, 19.5MB)
+테스트 21 〉	통과 (56.63ms, 32.1MB)
+테스트 22 〉	통과 (0.01ms, 4.18MB)
+테스트 23 〉	통과 (0.01ms, 3.61MB)
+테스트 24 〉	통과 (0.01ms, 4.19MB)
+*/
+#include <string>
+#include <vector>
+#include <unordered_set>
+#include <unordered_map>
+
+using namespace std;
+
+vector<int> solution(vector<string> id_list, vector<string> report, int k) {
+
+    unordered_map<string, int> ids;
+    vector<int> answer(id_list.size(), 0);
+    vector<unordered_set<string>> invoice(id_list.size());
+
+    for (int i = 0; i < id_list.size(); i++) ids[id_list[i]] = i;
+
+    for (auto& r: report) {
+        // 1. split from_to
+        string from = r.substr(0, r.find(' '));
+        string to = r.substr(r.find(' ')+1);
+
+        // 2. add from to
+        invoice[ids[to]].insert(from);
+    }  
+
+    // 3. send mail 
+    for (auto& p : invoice) {
+        if (p.size() >= k) {
+            for (auto& f : p) {
+                answer[ids[f]]++;
+            }
+        }
+    } 
+
+    return answer;
+}
+
+/*
+테스트 1 〉	통과 (0.02ms, 4.16MB)
+테스트 2 〉	통과 (0.04ms, 4.16MB)
+테스트 3 〉	통과 (145.51ms, 39MB)
+테스트 4 〉	통과 (0.05ms, 4.18MB)
+테스트 5 〉	통과 (0.06ms, 4.14MB)
+테스트 6 〉	통과 (1.16ms, 3.85MB)
+테스트 7 〉	통과 (2.57ms, 4.16MB)
+테스트 8 〉	통과 (4.96ms, 4.64MB)
+테스트 9 〉	통과 (65.71ms, 20.3MB)
+테스트 10 〉	통과 (70.77ms, 20.3MB)
+테스트 11 〉	통과 (145.11ms, 38.8MB)
+테스트 12 〉	통과 (0.25ms, 3.71MB)
+테스트 13 〉	통과 (0.24ms, 4.09MB)
+테스트 14 〉	통과 (63.95ms, 19.5MB)
+테스트 15 〉	통과 (122.42ms, 32.1MB)
+테스트 16 〉	통과 (0.20ms, 4.16MB)
+테스트 17 〉	통과 (0.27ms, 4.17MB)
+테스트 18 〉	통과 (0.40ms, 4.16MB)
+테스트 19 〉	통과 (0.72ms, 4.14MB)
+테스트 20 〉	통과 (64.69ms, 19.5MB)
+테스트 21 〉	통과 (159.95ms, 32.1MB)
+테스트 22 〉	통과 (0.03ms, 4.16MB)
+테스트 23 〉	통과 (0.02ms, 4.16MB)
+테스트 24 〉	통과 (0.02ms, 4.16MB)
+*/
+#include <sstream>
+#include <string>
+#include <vector>
+#include <unordered_set>
+#include <unordered_map>
+
+using namespace std;
+
+vector<int> solution(vector<string> id_list, vector<string> report, int k) {
+
+    unordered_map<string, int> ids;
+    vector<int> answer(id_list.size(), 0);
+    vector<unordered_set<string>> invoice(id_list.size());
+
+    for (int i = 0; i < id_list.size(); i++) ids[id_list[i]] = i;
+
+    for (auto& r: report) {
+        // 1. split from_to
+        istringstream is(r);
+        string from, to; is >> from >> to;
+
+        // 2. add from to
+        invoice[ids[to]].insert(from);
+    }  
+
+    // 3. send mail 
+    for (auto& p : invoice) {
+        if (p.size() >= k) {
+            for (auto& f : p) {
+                answer[ids[f]]++;
+            }
+        }
+    } 
+
+    return answer;
+}
