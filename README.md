@@ -25,20 +25,20 @@
 |16|Math|[약수의 개수와 덧셈](https://programmers.co.kr/learn/courses/30/lessons/77884)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/math/programmers_divisor_cnt.java)|
 |17|Sorting|[예산](https://programmers.co.kr/learn/courses/30/lessons/12982)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/sorting/programmers_budget.java)|
 |18|Sorting|[두 개 뽑아서 더하기](https://programmers.co.kr/learn/courses/30/lessons/68644)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/sorting/programmers_select_two_and_add.java)|
-|19|
-|20|
-|21|
-|22|
-|23|
-|24|
-|25|
-|26|
-|27|
-|28|
-|29|
-|30|
-|31|
-|32|
+|19|Math|[나머지가 1이 되는 수 찾기](https://programmers.co.kr/learn/courses/30/lessons/87389)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/math/programmers_remain_1_number.java)|
+|20|Math|[부족한 금액 계산하기](https://programmers.co.kr/learn/courses/30/lessons/82612)|[C++](https://github.com/krispediadot/Algorithms/blob/master/math/programmers_lack_cash_count.cpp) / [JAVA](https://github.com/krispediadot/Algorithms/blob/master/math/programmers_lack_cash_count.java)|
+|21|Math|[비밀지도](https://programmers.co.kr/learn/courses/30/lessons/17681)|[C++](https://github.com/krispediadot/Algorithms/blob/master/math/programmers_secret_map.cpp) / [JAVA](https://github.com/krispediadot/Algorithms/blob/master/math/programmers_secret_map.java)|
+|22|String|[가운데 글자 가져오기](https://programmers.co.kr/learn/courses/30/lessons/12903)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/string/programmers_get_middle_character.java)|
+|23|String|[다트 게임](https://programmers.co.kr/learn/courses/30/lessons/17682)|[C++](https://github.com/krispediadot/Algorithms/blob/master/string/programmers_dart_game.cpp) / [JAVA](https://github.com/krispediadot/Algorithms/blob/master/string/programmers_dart_game.java)|
+|24|Sorting|[같은 숫자는 싫어](https://programmers.co.kr/learn/courses/30/lessons/12906)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/sorting/programmers_no_same_number.java)|
+|25|Math|[나누어 떨어지는 숫자 배열](https://programmers.co.kr/learn/courses/30/lessons/12910)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/math/programmers_divisor_array.java)|
+|26|Math|[두 정수 사이의 합](https://programmers.co.kr/learn/courses/30/lessons/12912)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/math/programmers_sum_numbers_between_two_integer.java)|
+|27|String|[문자열 내림차순으로 배치하기](https://programmers.co.kr/learn/courses/30/lessons/12917)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/string/programmers_character_dsc.java)|
+|28|String|[문자열 다루기 기본](https://programmers.co.kr/learn/courses/30/lessons/12918)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/string/programmers_basic_string.java)|
+|29|String|[서울에서 김서방 찾기](https://programmers.co.kr/learn/courses/30/lessons/12919)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/string/programmers_find_kim_in_seoul.java)|
+|30|Math|[소수 찾기](https://programmers.co.kr/learn/courses/30/lessons/12921)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/math/protrammers_find_prime_number.java)
+|31|String|[수박수박수박수박수박수?](https://programmers.co.kr/learn/courses/30/lessons/12922)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/string/programmers_subaksubaksubak.java)|
+|32|String|[문자열을 정수로 바꾸기](https://programmers.co.kr/learn/courses/30/lessons/12925)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/string/programmers_make_string_to_integer.java)|
 |33|
 |34|
 |35|
@@ -57,18 +57,3 @@
 |48|
 |49|
 |50|
-|51|
-|52|
-|53|
-|54|
-|55|
-|56|
-|57|
-|58|
-|59|
-|60|
-|61|
-|62|
-|63|
-|64|
-|65|
