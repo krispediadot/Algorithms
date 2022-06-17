@@ -3,7 +3,9 @@
 
 #### [ Programmers ]
 
-##### - LEVEL1
+
+<details>
+<summary>LEVEL1</summary>
 
 | No. | Category | Title | Solution |
 |:---:|:---:|:---:|:---:|
@@ -39,21 +41,5 @@
 |30|Math|[소수 찾기](https://programmers.co.kr/learn/courses/30/lessons/12921)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/math/protrammers_find_prime_number.java)
 |31|String|[수박수박수박수박수박수?](https://programmers.co.kr/learn/courses/30/lessons/12922)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/string/programmers_subaksubaksubak.java)|
 |32|String|[문자열을 정수로 바꾸기](https://programmers.co.kr/learn/courses/30/lessons/12925)|[JAVA](https://github.com/krispediadot/Algorithms/blob/master/string/programmers_make_string_to_integer.java)|
-|33|
-|34|
-|35|
-|36|
-|37|
-|38|
-|39|
-|40|
-|41|
-|42|
-|43|
-|44|
-|45|
-|46|
-|47|
-|48|
-|49|
-|50|
+
+</details>
